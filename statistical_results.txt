@@ -1,0 +1,143 @@
+QUICK COMMERCE SURVEY — STATISTICAL RESULTS BY RESEARCH QUESTION
+=================================================================
+Sample: 101 active respondents (orders > 0) | Gen Z: n=54 | Gen X: n=47
+Outliers excluded: 2 (extreme order count / spend anomalies)
+
+═════════════════════════════════════════════════════════════════
+RQ1: FREQUENCY OF USAGE
+Does Gen Z exhibit a higher average frequency of quick commerce
+orders per week compared to Gen X?
+═════════════════════════════════════════════════════════════════
+Model: Poisson | Estimator: MLE | Test: Likelihood Ratio Test (one-tailed)
+H0: λ_Z = λ_X  |  H1: λ_Z > λ_X
+
+  MLE Estimates
+  ─────────────────────────────────────────────────────────────
+  λ_Z  (Gen Z orders/week)    =  5.8889
+  λ_X  (Gen X orders/week)    =  5.6596
+  Difference λ_Z − λ_X        =  0.2293
+  95% CI for difference        = [-0.7096,  1.1682]
+
+  Hypothesis Test
+  ─────────────────────────────────────────────────────────────
+  LRT statistic                =  0.2288
+  One-tailed p-value           =  0.3162
+  Decision (α = 0.05)         →  FAIL TO REJECT H0
+
+  Interpretation
+  ─────────────────────────────────────────────────────────────
+  No statistically significant evidence that Gen Z orders more
+  frequently than Gen X. Both groups average ~5.7–5.9 orders/week.
+  The CI for the difference straddles zero, meaning the gap could
+  plausibly run in either direction. The "digital nativity = higher
+  frequency" hypothesis is not supported by this sample.
+
+═════════════════════════════════════════════════════════════════
+RQ2: SPENDING PATTERNS
+Is there a significant difference in average spend per order
+between Gen Z and Gen X?
+═════════════════════════════════════════════════════════════════
+Model: Log-normal | Estimator: MLE | Test: Two-sample t-test on log-scale
+H0: μ_Z = μ_X  |  H1: μ_Z ≠ μ_X
+(Rows with ₹0 spend excluded from this test: n_Z=47, n_X=44)
+
+  MLE Estimates (log-normal parameters)
+  ─────────────────────────────────────────────────────────────
+  Gen Z  μ_log = 6.0162,  σ_log = 0.8584  → E[spend] = ₹592.63
+  Gen X  μ_log = 6.6211,  σ_log = 1.2409  → E[spend] = ₹1621.23
+
+  Ratio of Means (μ_Z / μ_X)
+  ─────────────────────────────────────────────────────────────
+  Point estimate               =  0.3655
+  95% CI for ratio             = [0.2386,  0.5600]
+
+  Hypothesis Test (on log-transformed spend)
+  ─────────────────────────────────────────────────────────────
+  t-statistic                  = -2.8501
+  Two-tailed p-value           =  0.0053
+  Decision (α = 0.05)         →  REJECT H0  ✓
+
+  Interpretation
+  ─────────────────────────────────────────────────────────────
+  Highly significant result. Gen X spends ~2.7× more per order
+  than Gen Z on average (₹1,621 vs ₹593). The ratio CI [0.24, 0.56]
+  excludes 1.0, confirming the gap is real. Gen X's higher σ_log
+  also signals greater spending variability — consistent with a mix
+  of routine grocery top-ups and larger planned purchases. This
+  supports the hypothesis of Gen Z preferring smaller, more frequent
+  impulse buys vs Gen X's larger, planned orders.
+
+═════════════════════════════════════════════════════════════════
+RQ4: ECO-FRIENDLY PRODUCT PROPORTION
+Do Gen Z and Gen X differ in their proportion of orders dedicated
+to sustainable / eco-friendly products?
+═════════════════════════════════════════════════════════════════
+Model: Binomial | Estimator: MLE | CI: Agresti-Coull | Test: z-test (one-tailed)
+H0: π_Z = π_X  |  H1: π_Z > π_X
+
+  MLE Estimates (proportion of 7 weekly orders that are eco)
+  ─────────────────────────────────────────────────────────────
+  π_Z  (Gen Z)   =  0.3651    95% Agresti-Coull CI: [0.2493, 0.4987]
+  π_X  (Gen X)   =  0.4924    95% Agresti-Coull CI: [0.3555, 0.6304]
+  Difference π_Z − π_X        = -0.1273
+  95% CI for difference        = [-0.3195,  0.0648]
+
+  Hypothesis Test
+  ─────────────────────────────────────────────────────────────
+  z-statistic                  = -1.2988
+  One-tailed p-value           =  0.9030
+  Decision (α = 0.05)         →  FAIL TO REJECT H0
+
+  Interpretation
+  ─────────────────────────────────────────────────────────────
+  Not only is Gen Z not buying more eco-friendly products — the
+  point estimate actually runs in the opposite direction (Gen X
+  proportion is higher at 0.49 vs 0.37). The CIs for both groups
+  are wide and overlapping, suggesting insufficient power with this
+  sample size to detect a meaningful difference. Worth noting:
+  "eco-friendly" was self-reported count out of 7 orders, which
+  introduces measurement ambiguity.
+
+═════════════════════════════════════════════════════════════════
+RQ6: TIME-OF-DAY USAGE
+Does the distribution of order times differ between Gen Z and Gen X?
+═════════════════════════════════════════════════════════════════
+Model: Multinomial | Estimator: MLE | CIs: Bonferroni-corrected simultaneous
+Test: Chi-square test of homogeneity (α = 0.05)
+H0: distributions identical  |  H1: distributions differ
+
+  MLE Probability Estimates & Simultaneous 95% CIs (Bonferroni)
+  ─────────────────────────────────────────────────────────────
+  Time Slot        π_Z      π_X      Diff     95% Bonferroni CI
+  Morning         0.0556   0.1702  -0.1147   [-0.2722,  0.0429]
+  Noon/Afternoon  0.2037   0.1915  +0.0122   [-0.1860,  0.2104]
+  Evening         0.4444   0.4894  -0.0449   [-0.2933,  0.2035]
+  Late Night      0.2963   0.1489  +0.1474   [-0.0549,  0.3496]
+
+  Chi-Square Test of Homogeneity
+  ─────────────────────────────────────────────────────────────
+  χ² statistic                 =  5.5573
+  Degrees of freedom           =  3
+  p-value                      =  0.1353
+  Decision (α = 0.05)         →  FAIL TO REJECT H0
+
+  Interpretation
+  ─────────────────────────────────────────────────────────────
+  The distributions do not differ significantly at α=0.05, though
+  the p-value (0.135) and the Late Night difference (+14.7pp) hint
+  at a meaningful behavioural pattern that a larger sample might
+  confirm. Gen Z shows nearly 2× the Late Night ordering rate of
+  Gen X (29.6% vs 14.9%), while Gen X skews more toward Morning
+  (17% vs 5.6%). These directional differences align strongly with
+  the hypothesis — the test just lacks sufficient power at n=101.
+  Consider this a "promising but underpowered" result.
+
+═════════════════════════════════════════════════════════════════
+SUMMARY TABLE
+═════════════════════════════════════════════════════════════════
+  RQ   Topic              Test Used         Result        p-value
+  ─────────────────────────────────────────────────────────────
+  1    Order frequency    Poisson LRT       No sig. diff  0.3162
+  2    Spend per order    Log-normal t      SIGNIFICANT   0.0053
+  4    Eco-friendly prop  Binomial z-test   No sig. diff  0.9030
+  6    Time-of-day dist   Chi-square        No sig. diff  0.1353
