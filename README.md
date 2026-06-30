@@ -8,5 +8,7 @@ Four research questions were addressed, each with a dedicated probability model,
 
 ## Guide 
 [Stats Summary](stats_summary.txt): Refer for the descriptive statistics data.
+  
 [Statistical Results](statistical_results.txt): Refer for the Research Questions and the core inferential statistical analyses.
+
 [Research Paper](research_paper.docx): Refer for the blueprint of the final research paper that was submitted to the teacher. 
